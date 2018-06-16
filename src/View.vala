@@ -392,7 +392,11 @@ public class View : Gtk.ApplicationWindow {
         });
 
         notify["fontheight"].connect (() => {
-            fontheight = fontheight.clamp (MINFONTSIZE, MAXFONTSIZE);
+            var fh = fontheight.clamp (MINFONTSIZE, MAXFONTSIZE);
+            if (fh != fontheight) {
+                fontheight = fh;
+            }
+
             set_window_size ();
         });
     }
@@ -754,6 +758,8 @@ private class RestartButton : Gtk.Button {
         restart_destructive = false;
 
         notify["restart-destructive"].connect (() => {
+            return_if_fail (image is Gtk.Widget);
+
             if (restart_destructive) {
                 image.get_style_context ().add_class ("warn");
                 image.get_style_context ().remove_class ("dim");

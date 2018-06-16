@@ -221,7 +221,8 @@ public class Controller : GLib.Object {
 #if HAVE_GTK_3_22
         new Thread<void*> (null, () => {
 #else
-        Thread.create<void*> (() => {
+        try {
+            Thread.create<void*> (() => {
 #endif
             var success = gen.generate ();
             /* Gtk is not thread-safe so must invoke in the main loop */
@@ -251,7 +252,10 @@ public class Controller : GLib.Object {
 #if HAVE_GTK_3_22
         });
 #else
-        }, false);
+            }, false);
+        } catch (ThreadError e) {
+            critical ("Thread error while generating - %s", e.message);
+        }
 #endif
 
     }
@@ -676,7 +680,8 @@ public class Controller : GLib.Object {
 #if HAVE_GTK_3_22
         new Thread<void*> (null, () => {
 #else
-        Thread.create<void*> (() => {
+        try {
+            Thread.create<void*> (() => {
 #endif
             diff = computer_solve_clues ();
 
@@ -715,7 +720,10 @@ public class Controller : GLib.Object {
 #if HAVE_GTK_3_22
         });
 #else
-        }, false);
+            }, false);
+        } catch (ThreadError e) {
+            critical ("Thread error while generating - %s", e.message);
+        }
 #endif
 
         yield;
