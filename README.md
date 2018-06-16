@@ -11,10 +11,12 @@ These dependencies must be present before building
  - `meson`
  - `gtk+-3.0`
  - `granite`
+ - `desktop-file-utils`
+ - `appstream`
 
  You can install these on a Ubuntu-based system by executing this command:
 
- `sudo apt install valac meson libgranite-dev`
+ `sudo apt install valac meson  desktop-file-utils appstream libgranite-dev`
 
 ### Building
 ```
