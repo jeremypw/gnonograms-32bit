@@ -5,7 +5,7 @@ and run on older machines and distros.
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 ![Screenshot](data/screenshots/Solving.png)
-
+Screenshot:  Running on Linux Mint Xfce 32 bit (Serena/Xenial).
 ### Dependencies
 These dependencies must be present before building
  - `valac`
