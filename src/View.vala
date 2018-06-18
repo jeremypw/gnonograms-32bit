@@ -573,6 +573,10 @@ public class View : Gtk.ApplicationWindow {
         Cell cell = target.clone ();
         cell.state = state;
 
+        if (current_cell.equal (cell)) {
+            return cell;
+        }
+
         model.set_data_from_cell (cell);
         update_current_cell (cell);
 
@@ -591,6 +595,8 @@ public class View : Gtk.ApplicationWindow {
     }
 
     private void update_current_cell (Cell target) {
+        return_if_fail (!current_cell.equal (target));
+
         previous_cell = current_cell;
         current_cell = target;
     }
