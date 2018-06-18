@@ -218,7 +218,12 @@ public class Controller : GLib.Object {
     }
 
     private void start_generating (Cancellable cancellable, AbstractGameGenerator gen) {
+#if HAVE_GTK_3_22
         new Thread<void*> (null, () => {
+#else
+        try {
+            Thread.create<void*> (() => {
+#endif
             var success = gen.generate ();
             /* Gtk is not thread-safe so must invoke in the main loop */
             MainContext.@default ().invoke (() => {
@@ -244,7 +249,15 @@ public class Controller : GLib.Object {
             });
 
             return null;
+#if HAVE_GTK_3_22
         });
+#else
+            }, false);
+        } catch (ThreadError e) {
+            critical ("Thread error while generating - %s", e.message);
+        }
+#endif
+
     }
 
     private void save_game_state () {
@@ -664,7 +677,12 @@ public class Controller : GLib.Object {
 
         view.show_working (cancellable, "Solving");
 
+#if HAVE_GTK_3_22
         new Thread<void*> (null, () => {
+#else
+        try {
+            Thread.create<void*> (() => {
+#endif
             diff = computer_solve_clues ();
 
             if (cancellable != null && cancellable.is_cancelled ()) {
@@ -699,7 +717,14 @@ public class Controller : GLib.Object {
             });
 
             return null;
+#if HAVE_GTK_3_22
         });
+#else
+            }, false);
+        } catch (ThreadError e) {
+            critical ("Thread error while generating - %s", e.message);
+        }
+#endif
 
         yield;
 

@@ -54,7 +54,7 @@ public class Progress_indicator : Gtk.Grid {
         add (spinner);
 
         cancel_button = new Gtk.Button ();
-        var img = new Gtk.Image.from_icon_name ("process-stop-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        var img = new Gtk.Image.from_icon_name ("process-stop", Gtk.IconSize.LARGE_TOOLBAR);
         img.set_tooltip_text (_("Cancel solving"));
         cancel_button.image = img;
         cancel_button.no_show_all = true;

@@ -46,9 +46,9 @@ public class ViewModeButton : Granite.Widgets.ModeButton {
 
     construct {
         /* Icons used are provisional */
-        setting_icon = new Gtk.Image.from_icon_name ("edit-symbolic", Gtk.IconSize.MENU);
-        solving_icon = new Gtk.Image.from_icon_name ("process-working-symbolic", Gtk.IconSize.MENU);
-        generating_icon = new Gtk.Image.from_icon_name ("list-add-symbolic", Gtk.IconSize.MENU);
+        setting_icon = new Gtk.Image.from_icon_name ("input-tablet", Gtk.IconSize.MENU);
+        solving_icon = new Gtk.Image.from_icon_name ("system-run", Gtk.IconSize.MENU);
+        generating_icon = new Gtk.Image.from_icon_name ("add", Gtk.IconSize.MENU);
 
         setting_icon.set_data ("mode", GameState.SETTING);
         solving_icon.set_data ("mode", GameState.SOLVING);

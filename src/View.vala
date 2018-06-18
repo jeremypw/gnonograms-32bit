@@ -78,7 +78,7 @@ public class View : Gtk.ApplicationWindow {
         }
 
         .tooltip {
-            background-color: @colorPrimary;
+            background-color: @colorPaleBackground;
             border-radius: 4px 4px 4px 4px;
         }
 
@@ -217,19 +217,19 @@ public class View : Gtk.ApplicationWindow {
         save_game_as_button.tooltip_text = _("Save Game to Different File");
 
         undo_button = new Gtk.Button ();
-        img = new Gtk.Image.from_icon_name ("edit-undo", Gtk.IconSize.LARGE_TOOLBAR);
+        img = new Gtk.Image.from_icon_name ("edit-undo-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         undo_button.image = img;
         undo_button.tooltip_text = _("Undo Last Move");
         undo_button.sensitive = false;
 
         redo_button = new Gtk.Button ();
-        img = new Gtk.Image.from_icon_name ("edit-redo", Gtk.IconSize.LARGE_TOOLBAR);
+        img = new Gtk.Image.from_icon_name ("edit-redo-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         redo_button.image = img;
         redo_button.tooltip_text = _("Redo Last Move");
         redo_button.sensitive = false;
 
         check_correct_button = new Gtk.Button ();
-        img = new Gtk.Image.from_icon_name ("media-seek-backward", Gtk.IconSize.LARGE_TOOLBAR);
+        img = new Gtk.Image.from_icon_name ("media-seek-backward-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         check_correct_button.image = img;
         check_correct_button.tooltip_text = _("Go Back to Last Correct Position");
         check_correct_button.sensitive = false;
@@ -239,13 +239,13 @@ public class View : Gtk.ApplicationWindow {
         restart_button.image = img;
 
         hint_button = new Gtk.Button ();
-        img = new Gtk.Image.from_icon_name ("help-contents-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
+        img = new Gtk.Image.from_icon_name ("face-uncertain", Gtk.IconSize.LARGE_TOOLBAR);
         hint_button.image = img;
         hint_button.tooltip_text = _("Suggest next move");
         hint_button.sensitive = false;
 
         auto_solve_button = new Gtk.Button ();
-        img = new Gtk.Image.from_icon_name ("system-run", Gtk.IconSize.LARGE_TOOLBAR);
+        img = new Gtk.Image.from_icon_name ("computer", Gtk.IconSize.LARGE_TOOLBAR);
         auto_solve_button.image = img;
         auto_solve_button.tooltip_text = _("Solve by Computer");
         auto_solve_button.sensitive = false;
@@ -392,7 +392,11 @@ public class View : Gtk.ApplicationWindow {
         });
 
         notify["fontheight"].connect (() => {
-            fontheight = fontheight.clamp (MINFONTSIZE, MAXFONTSIZE);
+            var fh = fontheight.clamp (MINFONTSIZE, MAXFONTSIZE);
+            if (fh != fontheight) {
+                fontheight = fh;
+            }
+
             set_window_size ();
         });
     }
@@ -569,6 +573,10 @@ public class View : Gtk.ApplicationWindow {
         Cell cell = target.clone ();
         cell.state = state;
 
+        if (current_cell.equal (cell)) {
+            return cell;
+        }
+
         model.set_data_from_cell (cell);
         update_current_cell (cell);
 
@@ -587,6 +595,8 @@ public class View : Gtk.ApplicationWindow {
     }
 
     private void update_current_cell (Cell target) {
+        return_if_fail (!current_cell.equal (target));
+
         previous_cell = current_cell;
         current_cell = target;
     }
@@ -754,6 +764,8 @@ private class RestartButton : Gtk.Button {
         restart_destructive = false;
 
         notify["restart-destructive"].connect (() => {
+            return_if_fail (image is Gtk.Widget);
+
             if (restart_destructive) {
                 image.get_style_context ().add_class ("warn");
                 image.get_style_context ().remove_class ("dim");
