@@ -9,8 +9,8 @@ Build-Depends: meson, desktop-file-utils, appstream, debhelper (>= 9), valac (>=
 Package-List:
  com.github.jeremypw.gnonograms deb x11 extra arch=any
 Checksums-Sha1:
- 87a4061eb02b67580812c0130711d3d91194bb79 359180 com.github.jeremypw.gnonograms_1.2.2.tar.xz
+ e46aff92b1cbfb9f4bbedaa47935ce4862626be7 1239872 com.github.jeremypw.gnonograms_1.2.2.tar.xz
 Checksums-Sha256:
- 3f23ef3edc92cefdc1a28f98c1a96301806a4b38835e4337a29bddcabb252bde 359180 com.github.jeremypw.gnonograms_1.2.2.tar.xz
+ ccf647ac886ba82309fd4ac17901484e443e46ff496b8fe840213e2ea96f8fe8 1239872 com.github.jeremypw.gnonograms_1.2.2.tar.xz
 Files:
- 6a2272579428ceac3c2ed657c3a7159f 359180 com.github.jeremypw.gnonograms_1.2.2.tar.xz
+ 39ca8c58a9f89573d3e10db3924a3ebc 1239872 com.github.jeremypw.gnonograms_1.2.2.tar.xz

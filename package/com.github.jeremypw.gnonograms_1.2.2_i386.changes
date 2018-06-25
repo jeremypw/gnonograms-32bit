@@ -20,14 +20,14 @@ Changes:
    * Some code refactoring and cleanup
    * Various small bug fixes
 Checksums-Sha1:
- 995af28108472b8a14266ba95d49345aacd6c729 803 com.github.jeremypw.gnonograms_1.2.2.dsc
- 87a4061eb02b67580812c0130711d3d91194bb79 359180 com.github.jeremypw.gnonograms_1.2.2.tar.xz
- d2a13756e21f374848e0c9f03bb699a1b9ea7b9f 176110 com.github.jeremypw.gnonograms_1.2.2_i386.deb
+ 5a7b38a9b24db7de4ad027810596d20091af6ca1 806 com.github.jeremypw.gnonograms_1.2.2.dsc
+ e46aff92b1cbfb9f4bbedaa47935ce4862626be7 1239872 com.github.jeremypw.gnonograms_1.2.2.tar.xz
+ bba3eeb0551db6f67d4b2c5ae037f68060226323 176124 com.github.jeremypw.gnonograms_1.2.2_i386.deb
 Checksums-Sha256:
- d18f8105a9e6eaa09969791c137d45e25e01bcf5fdac9f9877612aae59a050ca 803 com.github.jeremypw.gnonograms_1.2.2.dsc
- 3f23ef3edc92cefdc1a28f98c1a96301806a4b38835e4337a29bddcabb252bde 359180 com.github.jeremypw.gnonograms_1.2.2.tar.xz
- 3d19c5e8842ac310cfdb3c4ce6efd7f342577426ba74dce676ff57f5cc25743a 176110 com.github.jeremypw.gnonograms_1.2.2_i386.deb
+ bdd940852b55035fcd390777c662b183cb3b76b2a95294cbe4e99dd0882dd528 806 com.github.jeremypw.gnonograms_1.2.2.dsc
+ ccf647ac886ba82309fd4ac17901484e443e46ff496b8fe840213e2ea96f8fe8 1239872 com.github.jeremypw.gnonograms_1.2.2.tar.xz
+ 00fff82102db5cb65473696b2116ba6c34ae3e0db656c93df34b6552412da2c5 176124 com.github.jeremypw.gnonograms_1.2.2_i386.deb
 Files:
- f61d34bb5aeb0eb4f267f6dad147f22f 803 x11 extra com.github.jeremypw.gnonograms_1.2.2.dsc
- 6a2272579428ceac3c2ed657c3a7159f 359180 x11 extra com.github.jeremypw.gnonograms_1.2.2.tar.xz
- ae7ce14b654c6ce8258006c90053addb 176110 x11 extra com.github.jeremypw.gnonograms_1.2.2_i386.deb
+ 818e6810573df8a3d687eccaab428ce2 806 x11 extra com.github.jeremypw.gnonograms_1.2.2.dsc
+ 39ca8c58a9f89573d3e10db3924a3ebc 1239872 x11 extra com.github.jeremypw.gnonograms_1.2.2.tar.xz
+ cefbf42a0019de7a1e24caa3ca8cd7f1 176124 x11 extra com.github.jeremypw.gnonograms_1.2.2_i386.deb
