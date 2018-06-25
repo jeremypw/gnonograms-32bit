@@ -56,6 +56,7 @@ public class View : Gtk.ApplicationWindow {
     /**PRIVATE**/
     private const uint PROGRESS_DELAY_MSEC = 500;
 
+    /* This version has been tweaked for non elementaryos themes (light) */
     private string BRAND_STYLESHEET = """
         @define-color textColorPrimary %s;
         @define-color textColorPrimaryShadow %s;
@@ -71,6 +72,7 @@ public class View : Gtk.ApplicationWindow {
 
         *.label:selected {
             background-color: @colorPaleBackground;
+            color: @textColorPrimaryShadow;
         }
 
         *.dim {
@@ -84,7 +86,7 @@ public class View : Gtk.ApplicationWindow {
 
         .progress  {
             opacity: 1.0;
-            color: @textColorPrimary;
+            color: @textColorPrimaryShadow;
             font-weight: bold
         }
 
