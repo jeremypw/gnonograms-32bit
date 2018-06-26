@@ -23,6 +23,14 @@
         <category>LogicGame</category>
     </categories>
     <releases>
+        <release version="1.2.2.1" date="2018-06-26" urgency="low">
+            <description>
+                <ul>
+                    <li>Enable compilation and running on old 32-bit computer with older tools</li>
+                    <li>Improve appearance with non elementaryos theme</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.2.2" date="2018-05-17" urgency="low">
             <description>
                 <ul>

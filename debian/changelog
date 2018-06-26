@@ -1,3 +1,10 @@
+com.github.jeremypw.gnonograms (1.2.2.1) xenial; urgency=low
+
+  * Enable compilation and running on old 32-bit computer with older tools
+  * Improve appearance with non elementaryos theme
+
+ -- Jeremy Wootten <jeremywootten@gmail.com>  Tue, 26 Jun 2018 10:45:00 +0000
+
 com.github.jeremypw.gnonograms (1.2.2) xenial; urgency=low
 
   * Use scrolled window when grid larger than screen
