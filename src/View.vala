@@ -81,6 +81,7 @@ public class View : Gtk.ApplicationWindow {
 
         .tooltip {
             background-color: @colorPaleBackground;
+            color: @textColorPrimaryShadow;
             border-radius: 4px 4px 4px 4px;
         }
 

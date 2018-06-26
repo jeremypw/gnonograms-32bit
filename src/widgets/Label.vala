@@ -259,7 +259,7 @@ class Clue : Gtk.Label {
     }
 
     private void update_tooltip () {
-        set_tooltip_markup (tip_template.printf ((int)fontsize / 2) +
+        set_tooltip_markup (tip_template.printf ((int)fontsize) +
                             _("Freedom = %u").printf (size - Utils.blockextent_from_clue (_clue)) +
                             "</span>");
     }
