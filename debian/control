@@ -18,4 +18,10 @@ Architecture: any
 Description: Generate, draw and solve nonogram logic puzzles
 Depends: ${misc:Depends}, ${shlibs:Depends}
 
-
+Package: libgnonograms
+Architecture: any
+Description: Generate, draw and solve nonogram logic puzzles.
+ This package contains the shared files for gnonograms and gnonogram-tools or for
+ embedding parts of gnonograms into other programs.
+Depends: ${misc:Depends}
+Suggests: com.github.jeremypw.gnonograms

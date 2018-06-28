@@ -1,0 +1,33 @@
+Format: 1.8
+Date: Thu, 28 Jun 2018 18:54:00 +0000
+Source: com.github.jeremypw.gnonograms
+Binary: com.github.jeremypw.gnonograms libgnonograms
+Architecture: source i386
+Version: 1.3
+Distribution: xenial
+Urgency: low
+Maintainer: Jeremy Wootten <jeremywootten@gmail.com>
+Changed-By: Jeremy Wootten <jeremywootten@gmail.com>
+Description:
+ com.github.jeremypw.gnonograms - Generate, draw and solve nonogram logic puzzles
+ libgnonograms - Generate, draw and solve nonogram logic puzzles.
+Changes:
+ com.github.jeremypw.gnonograms (1.3) xenial; urgency=low
+ .
+   * Create shared library from core files
+   * Build separate libgnonograms package
+Checksums-Sha1:
+ adbff410e0f7983d60c02a76e049328dbd7ba34c 851 com.github.jeremypw.gnonograms_1.3.dsc
+ f46377cf3c1e0a97ddceba0985aa3e891dcbcd5c 3534180 com.github.jeremypw.gnonograms_1.3.tar.xz
+ 1452925157d3dd322cc26bc9de46ed5a31277cf0 192390 com.github.jeremypw.gnonograms_1.3_i386.deb
+ 2bdc1ab407136e5d4aa7ed3b363c4e18c3160938 2776 libgnonograms_1.3_i386.deb
+Checksums-Sha256:
+ 736fb7e01cb031faddb9a4115ef1d268c8774b49e0a4895167bc1848922ad796 851 com.github.jeremypw.gnonograms_1.3.dsc
+ 7f2e6bf99f65d9c05cbff960c73ba4d3d3af54abcae5d63c1b1bdfbc19602d87 3534180 com.github.jeremypw.gnonograms_1.3.tar.xz
+ 7455b0a199f76d31a5c9cfc67a28884702cdb1e1176bd8862418debbc70e86c7 192390 com.github.jeremypw.gnonograms_1.3_i386.deb
+ 1f14390daaf303272c66cdeb071d4a769640d898d74264123bafb77f9bdb6bc2 2776 libgnonograms_1.3_i386.deb
+Files:
+ c59bf57e42deed12d22bbdd22675e27c 851 x11 extra com.github.jeremypw.gnonograms_1.3.dsc
+ 5a86d0db2c6ba411cd4e2dc1676c0133 3534180 x11 extra com.github.jeremypw.gnonograms_1.3.tar.xz
+ 97079f3e0d5d342010b779c169eaba3a 192390 x11 extra com.github.jeremypw.gnonograms_1.3_i386.deb
+ 790c99b2725dd8976a89106edb71bbde 2776 x11 extra libgnonograms_1.3_i386.deb

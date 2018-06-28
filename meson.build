@@ -21,19 +21,11 @@ if GTK322.found ()
     )
 endif
 
-executable (
-    meson.project_name (),
-    'src/Application.vala',
-    'src/Controller.vala',
-    'src/View.vala',
-    'src/RandomPatternGenerator.vala',
-    'src/SimpleRandomGameGenerator.vala',
+lib = shared_library (
+    shortname,
     'libcore/widgets/Labelbox.vala',
     'libcore/widgets/Label.vala',
     'libcore/widgets/Cellgrid.vala',
-    'src/widgets/AppMenu.vala',
-    'src/widgets/ViewModeButton.vala',
-    'src/widgets/Progress_indicator.vala',
     'libcore/AbstractPatternGenerator.vala',
     'libcore/AbstractGameGenerator.vala',
     'libcore/AbstractSolver.vala',
@@ -50,12 +42,38 @@ executable (
     'libcore/Enums.vala',
     'libcore/Structs.vala',
     'libcore/Constants.vala',
+
     dependencies : [
         dependency ('gtk+-3.0'),
         dependency ('gee-0.8'),
         dependency ('granite')
     ],
-    install: true
+
+    install: true,
+    version: '1.3',
+    soversion: '0'
+)
+
+
+executable (
+    meson.project_name (),
+    'src/Application.vala',
+    'src/Controller.vala',
+    'src/View.vala',
+    'src/RandomPatternGenerator.vala',
+    'src/SimpleRandomGameGenerator.vala',
+    'src/widgets/AppMenu.vala',
+    'src/widgets/ViewModeButton.vala',
+    'src/widgets/Progress_indicator.vala',
+
+    dependencies : [
+        dependency ('gtk+-3.0'),
+        dependency ('gee-0.8'),
+        dependency ('granite')
+    ],
+
+    install: true,
+    link_with: lib
 )
 
 meson.add_install_script('meson/post_install.py')
