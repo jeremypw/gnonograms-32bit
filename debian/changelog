@@ -2,8 +2,9 @@ com.github.jeremypw.gnonograms (1.3) xenial; urgency=low
 
   * Build separate libgnonograms-core package</li>
   * Install pkgconfig data
+  * Install .vapi and .h files
 
- -- Jeremy Wootten <jeremywootten@gmail.com>  Fri, 29 Jun 2018 18:54:00 +0000
+ -- Jeremy Wootten <jeremywootten@gmail.com>  Fri, 29 Jun 2018 17:50:00 +0000
 
 com.github.jeremypw.gnonograms (1.3) xenial; urgency=low
 

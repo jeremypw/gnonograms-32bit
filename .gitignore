@@ -39,6 +39,7 @@ debian/com.github*
 debian/*debhelper*
 debian/libgnonograms*
 debian/files
+configure/*
 
 #Misc untracked
 untracked/*

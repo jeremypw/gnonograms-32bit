@@ -28,6 +28,7 @@
                 <ul>
                     <li>Build separate libgnonograms-core package</li>
                     <li>Install pkgconfig data</li>
+                    <li>Install .vapi and .h files</li>
                 </ul>
             </description>
         </release>

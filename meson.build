@@ -98,6 +98,10 @@ uninstall_data.set('tmp_dir_path', tmp_dir_path)
 uninstall_data.set('icon_dir_path', join_paths(get_option('prefix'), get_option('datadir'), 'icons', 'hicolor'))
 uninstall_data.set('mime_dir_path', join_paths(get_option('prefix'), get_option('datadir'), 'mime', 'packages'))
 uninstall_data.set('desktop_dir_path', join_paths(get_option('prefix'), get_option('datadir'), 'applications'))
+uninstall_data.set('lib_dir_path', join_paths(get_option('prefix'), get_option('libdir')))
+uninstall_data.set('inc_dir_path', join_paths(get_option('prefix'), get_option('includedir')))
+uninstall_data.set('vapi_dir_path', join_paths(get_option('prefix'), get_option('datadir'), 'vala', 'vapi'))
+uninstall_data.set('lib_name', libname)
 
 configure_file (
     input: join_paths (meson.source_root (), 'data', 'post_uninstall.py.in'),
