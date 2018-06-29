@@ -52,6 +52,7 @@ lib = shared_library (
     ],
 
     install: true,
+    install_dir: [true, true, true],
     version: libver,
     soversion: '0'
 )
@@ -59,7 +60,7 @@ lib = shared_library (
 pkg = import ('pkgconfig')
 pkg.generate (
     description: 'Core functions for gnonograms and gnonogram-tools',
-    filebase: 'libgnonograms-core',
+    filebase: 'gnonograms-core',
     libraries: lib,
     name: libname,
     version: libver,
