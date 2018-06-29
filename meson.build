@@ -3,6 +3,8 @@ shortname = 'gnonograms'
 domain = 'com.github.jeremypw.'
 schema_path = '/com/github/jeremypw/' + shortname + '/'
 tmp_dir_path = '/.local/share/' + shortname + '/'
+libver = '1.3'
+libname = shortname + '-core'
 
 i18n = import ('i18n')
 
@@ -22,7 +24,7 @@ if GTK322.found ()
 endif
 
 lib = shared_library (
-    shortname,
+    libname,
     'libcore/widgets/Labelbox.vala',
     'libcore/widgets/Label.vala',
     'libcore/widgets/Cellgrid.vala',
@@ -50,10 +52,19 @@ lib = shared_library (
     ],
 
     install: true,
-    version: '1.3',
+    version: libver,
     soversion: '0'
 )
 
+pkg = import ('pkgconfig')
+pkg.generate (
+    description: 'Core functions for gnonograms and gnonogram-tools',
+    filebase: 'libgnonograms-core',
+    libraries: lib,
+    name: libname,
+    version: libver,
+    requires: ['gtk+-3.0', 'gee-0.8', 'granite']
+)
 
 executable (
     meson.project_name (),
@@ -75,6 +86,7 @@ executable (
     install: true,
     link_with: lib
 )
+
 
 meson.add_install_script('meson/post_install.py')
 
