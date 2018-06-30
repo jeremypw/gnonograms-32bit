@@ -25,6 +25,11 @@ endif
 
 lib = shared_library (
     libname,
+    'libcore/widgets/AbstractAppSetting.vala',
+    'libcore/widgets/GradeChooser.vala',
+    'libcore/widgets/ScaleGrid.vala',
+    'libcore/widgets/SettingSwitch.vala',
+    'libcore/widgets/TitleEntry.vala',
     'libcore/widgets/Labelbox.vala',
     'libcore/widgets/Label.vala',
     'libcore/widgets/Cellgrid.vala',

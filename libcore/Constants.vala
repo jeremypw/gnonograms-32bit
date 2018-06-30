@@ -25,6 +25,8 @@ namespace Gnonograms {
     public const int MINSIZE = 5; // Change to 1 when debugging
     public const double MINFONTSIZE = 8.0;
     public const double MAXFONTSIZE = 36.0;
+    public const Difficulty MIN_GRADE = Difficulty.EASY; /* TRIVIAL and VERY EASY GRADES not worth supporting */
+
 
     public const double FONT_ASPECT_RATIO = 1.2;
     public const int HEADER_HEIGHT = Gtk.IconSize.LARGE_TOOLBAR;
