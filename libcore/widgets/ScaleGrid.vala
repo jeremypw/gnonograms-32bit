@@ -22,16 +22,15 @@ public class Gnonograms.ScaleGrid : Gnonograms.AppSetting {
     public string heading { get; set; }
     public Gtk.Grid chooser { get; set; }
     public Gtk.Label heading_label { get; set; }
-    public Gtk.Label val_label { get; set; }
-    private Gtk.Scale scale { get; set; }
+    private Gtk.Label val_label;
+    private Gtk.Scale scale;
 
     public signal void value_changed (uint @value);
+
     construct {
         val_label = new Gtk.Label ("");
         chooser = new Gtk.Grid ();
         chooser.column_spacing = 6;
-
-        scale = new Gtk.Scale (Gtk.Orientation.HORIZONTAL, null);
     }
 
     public ScaleGrid (string _heading) {
@@ -39,7 +38,9 @@ public class Gnonograms.ScaleGrid : Gnonograms.AppSetting {
         var step = (double)Gnonograms.SIZESTEP;
         var start = (double)Gnonograms.MINSIZE /step;
         var end = (double)Gnonograms.MAXSIZE / step + 1.0;
-        scale.set_adjustment (new Gtk.Adjustment (start, start, end, 1.0, 1.0, 1.0));
+        var adj = new Gtk.Adjustment (start, start, end, 1.0, 1.0, 1.0);
+
+        scale = new Gtk.Scale (Gtk.Orientation.HORIZONTAL, adj);
         scale.expand = false;
         scale.hexpand = true;
         scale.draw_value = false;
@@ -49,10 +50,16 @@ public class Gnonograms.ScaleGrid : Gnonograms.AppSetting {
         for (var val = start; val <= end; val += 1.0) {
             scale.add_mark (val, Gtk.PositionType.BOTTOM, null);
         }
+
         scale.value_changed.connect (() => {
-            var val = (uint)(scale.get_value ())  * Gnonograms.SIZESTEP;
+            var round_val = (uint)(scale.get_value () + 0.1);
+            var val = round_val * Gnonograms.SIZESTEP;
             val_label.label = val.to_string ();
             value_changed (val);
+
+            if ((double)round_val != scale.get_value ()) {
+                set_value (val);
+            }
         });
 
         heading_label = new Gtk.Label (heading);
