@@ -42,8 +42,8 @@ class AppMenu : Gtk.MenuButton {
         popover.add (grid);
 
         grade_setting = new GradeChooser ();
-        row_setting = new ScaleGrid (_("Rows"), 10, 50, 5);
-        column_setting = new ScaleGrid (_("Columns"), 10, 50, 5);
+        row_setting = new ScaleGrid (_("Rows"));
+        column_setting = new ScaleGrid (_("Columns"));
         title_setting = new TitleEntry ();
         strikeout_setting = new SettingSwitch (_("Strike out complete blocks"));
 
