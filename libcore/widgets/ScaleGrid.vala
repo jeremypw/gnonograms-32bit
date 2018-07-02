@@ -51,13 +51,15 @@ public class Gnonograms.ScaleGrid : Gnonograms.AppSetting {
             scale.add_mark (val, Gtk.PositionType.BOTTOM, null);
         }
 
-        scale.value_changed.connect (() => {
-            var round_val = (uint)(scale.get_value () + 0.1);
+        /* Connecting to scale.value_changed does not work as library dependency */
+        adj.notify["value"].connect (() => {
+            var scale_val = adj.@value;
+            var round_val = (uint)(scale_val + 0.1);
             var val = round_val * Gnonograms.SIZESTEP;
             val_label.label = val.to_string ();
             value_changed (val);
 
-            if ((double)round_val != scale.get_value ()) {
+            if ((double)round_val != scale_val) {
                 set_value (val);
             }
         });
