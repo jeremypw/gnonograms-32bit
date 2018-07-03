@@ -40,6 +40,8 @@ public class Filewriter : Object {
     public My2DCellArray? solution { get; set; default = null;}
     public My2DCellArray? working { get; set; default = null;}
 
+    public bool show_save_solution {get; construct;}
+
     public Filewriter (Gtk.Window? parent,
                        string? save_dir_path,
                        string? path,
@@ -47,7 +49,8 @@ public class Filewriter : Object {
                        Dimensions dimensions,
                        string[] row_clues,
                        string[] col_clues,
-                       History? history) throws IOError {
+                       History? history,
+                       bool show_save_solution = true) throws IOError {
 
         Object (
             name: name ?? _(UNTITLED_NAME),
@@ -55,7 +58,8 @@ public class Filewriter : Object {
             cols: dimensions.cols (),
             row_clues: row_clues,
             col_clues: col_clues,
-            history: history
+            history: history,
+            show_save_solution: show_save_solution
         );
 
         if (path == null || path.length <= 4) {
@@ -70,9 +74,6 @@ public class Filewriter : Object {
 
             game_path = game_path + Gnonograms.GAMEFILEEXTENSION;
         }
-
-        working = new My2DCellArray (dimensions);
-        solution = new My2DCellArray (dimensions);
     }
 
     construct {
@@ -134,7 +135,7 @@ public class Filewriter : Object {
 
         stream.flush ();
 
-        if (save_solution) {
+        if (save_solution & solution != null) {
             stream.printf ("[Solution grid]\n");
             stream.printf ("%s", solution.to_string ());
         }
@@ -177,8 +178,11 @@ public class Filewriter : Object {
     private FileStream? stream;
 
     private string? get_save_file_path (Gtk.Window? parent, string? save_dir_path) {
-
         var action = Gnonograms.FileChooserAction.SAVE_WITH_SOLUTION;
+
+        if (!show_save_solution) {
+            action = Gnonograms.FileChooserAction.SAVE_NO_SOLUTION;
+        }
 
         bool with_solution;
         FilterInfo info = {_("Gnonogram puzzles"), "*" + Gnonograms.GAMEFILEEXTENSION};
@@ -192,9 +196,9 @@ public class Filewriter : Object {
         );
 
         if (path != null) {
-            save_solution = with_solution;
+            save_solution = show_save_solution && with_solution;
 
-            if (!save_solution) {
+            if (!save_solution && show_save_solution) {
                 save_solution = !Utils.show_confirm_dialog (_("Confirm save without solution"),
                                                             _("Do not save computer insoluble clues without solution"),
                                                             parent);
