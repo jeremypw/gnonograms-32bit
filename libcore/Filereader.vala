@@ -49,6 +49,7 @@ public class Filereader : Object {
     public bool has_working { get; private set; default = false;}
     public bool has_state { get; private set; default = false;}
     public bool is_readonly { get; private set; default = true;}
+    public bool allow_invalid { get; construct;}
 
     public bool valid {
         get {
@@ -56,8 +57,12 @@ public class Filereader : Object {
         }
     }
 
-    public Filereader (Gtk.Window? parent, string? load_dir_path, File? game) throws GLib.IOError {
-        Object (game_file: game);
+    public Filereader (Gtk.Window? parent,
+                       string? load_dir_path,
+                       File? game,
+                       bool allow_invalid = false) throws GLib.IOError {
+
+        Object (game_file: game, allow_invalid: allow_invalid);
 
         if (game == null) {
             game_file = get_load_game_file (parent, load_dir_path);
@@ -411,7 +416,7 @@ public class Filereader : Object {
                 zero_count++;
             }
 
-            if (b < 0 || b > remaining_space) {
+            if (!allow_invalid && (b < 0 || b > remaining_space)) {
                 return null;
             }
 
