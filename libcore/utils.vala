@@ -380,7 +380,7 @@ namespace Utils {
         Gtk.Switch? save_solution_switch = null;
 
         //only need access to built-in puzzle directory if loading a .gno puzzle
-        if (action != Gnonograms.FileChooserAction.OPEN) {
+        if (action == Gnonograms.FileChooserAction.SAVE_WITH_SOLUTION) {
             var grid = new Gtk.Grid ();
             grid.orientation = Gtk.Orientation.HORIZONTAL;
             grid.column_spacing = 6;
