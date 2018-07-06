@@ -166,18 +166,15 @@ namespace Utils {
         return blocks;
     }
 
-#if 0
-    /* For debugging */
-    private string block_list_to_string (Gee.ArrayList<Block> list) {
+    public string block_list_to_string (Gee.ArrayList<Block> list) {
         StringBuilder sb = new StringBuilder ("");
 
         foreach (Block b in list) {
             sb.append (b.length.to_string () + ",");
         }
 
-        return sb.str;
+        return sb.str.substring (0, -2);
     }
-#endif
 
     public string block_string_from_cellstate_array (CellState[] cellstates) {
         StringBuilder sb = new StringBuilder ("");

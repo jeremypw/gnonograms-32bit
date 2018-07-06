@@ -48,7 +48,7 @@ public enum Difficulty {
             case Difficulty.ADVANCED:
                 return _("Advanced logic required");
             case Difficulty.MAXIMUM:
-                return _("Possibly ambiguous");
+                return _("Ambiguous - multiple solutions");
             case Difficulty.COMPUTER:
                 return _("Super human");
             case Difficulty.UNDEFINED:
