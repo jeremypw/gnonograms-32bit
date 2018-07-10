@@ -497,10 +497,6 @@ public class Region { /* Not a GObject, to reduce weight */
             return true;
         }
 
-        if (check_collisions () || in_error) {
-            return true;
-        }
-
         return false;
     }
 
@@ -1416,82 +1412,6 @@ public class Region { /* Not a GObject, to reduce weight */
         }
 
         return false; //only changes tags
-    }
-
-    private bool check_collisions () {
-        bool changed = false;
-        for (int i = 0; i < n_cells - 2; i++) {
-            if (tags[i, can_be_empty_pointer] || tags[i, is_finished_pointer]) {
-                continue;
-            }
-
-            int owner = get_sole_owner (i);
-            if (owner >= 0) { //Filled cell with one owner
-                int next_owner = get_sole_owner (i + 1);
-                if (next_owner >= 0 && !tags[i + 1, can_be_empty_pointer]) { // Adjacent owner sole and filled
-                    if (owner != next_owner) { // Must be same owner
-                        record_error ("check_collisions", "Adjacent different sole owners idxs %i, %i".printf ( i, i + 1));
-                        return false;
-                    } else {
-                        continue; // No collision
-                    }
-                } else if (next_owner < 0) { // Adjacent cell must be same owner or empty
-                    set_cell_owner (i + 1, owner, true, true);
-                    if (owner < n_blocks - 2) {
-                        // search for filled cell assumed belonging to next block
-                        // Extend beyond if appropriate
-                        int start = i + 1;
-                        int length = blocks[owner + 1];
-                        int limit = start + length;
-                        int filled_idx = seek_next_required_status (CellState.FILLED, start, limit, 1);
-                        if (filled_idx < limit) {
-                            for (int j = filled_idx; j < limit; j++) {
-                                set_cell_owner (j, owner + 1, true, false);
-                            }
-                        }
-                        changed = true;
-                    }
-                }
-            }
-        }
-
-        for (int i = n_cells - 1; i > 1; i--) {
-            if (tags[i, can_be_empty_pointer] || tags[i, is_finished_pointer]) {
-                continue;
-            }
-
-            int owner = get_sole_owner (i);
-            if (owner >= 0) {
-                int next_owner = get_sole_owner (i - 1);
-                if (next_owner >= 0 && !tags[i - 1, can_be_empty_pointer]) {
-                    if (owner != next_owner) {
-                        record_error ("check_collisions", "Adjacent different sole owners idxs %i, %i".printf ( i - 1, FORWARDS));
-                        return false;
-                    } else {
-                        continue;
-                    }
-                } else if (next_owner < 0) {
-                    set_cell_owner (i - 1, owner, true, true);
-                    if (owner > 0) {
-                        // search for filled cell assumed belonging to next block
-                        // Extend beyond if appropriate
-                        int start = i - 1;
-                        int length = blocks[owner - 1];
-                        int limit = start - length;
-                        int filled_idx = seek_next_required_status (CellState.FILLED, start, limit, BACKWARDS);
-                        if (filled_idx < limit) {
-                            for (int j = filled_idx; j < limit; j++) {
-                                set_cell_owner (j, owner - 1, true, false);
-                            }
-                        }
-
-                        changed = true;
-                    }
-                }
-            }
-        }
-
-        return changed;
     }
 
     // == == == == == == == == == == == == == == == == == == == == == == == == == == == == == ==
